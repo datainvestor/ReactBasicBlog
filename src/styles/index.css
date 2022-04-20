@@ -1,0 +1,149 @@
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.intro {
+  height: 300px;
+  position: relative;
+  padding: 30px;
+  box-sizing: border-box;
+  background-image: url('../assets/images/main-page-background.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+
+.intro h1 {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  font-size: 1.5rem;
+  color: black;
+  background-color: rgb(211, 211, 211);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px black;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+@media (min-width: 768px) {
+  .intro h1 {
+    font-size: 2rem;
+  }
+}
+
+.featured-posts {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.header-container {
+  height: 60px;
+}
+
+.the-header {
+  width: 100%;
+  position: fixed;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  z-index: 100;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.logo {
+  margin: 0 10px;
+  font-size: 1.3rem;
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.navigation-items {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navigation-items {
+    display: block;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-item a:hover,
+.nav-item a:active,
+.nav-item a.active {
+  color: red;
+}
+
+.admin-page {
+  padding: 20px;
+}
+
+.new-post {
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.existing-posts h1 {
+  text-align: center;
+}
+
+.update-form {
+  width: 90%;
+  margin: 20px auto;
+}
+
+@media (min-width: 768px) {
+  .update-form {
+    width: 500px;
+  }
+}
+
+
+.new-post-form {
+  width: 90%;
+  margin: 20px auto;
+}
+
+@media (min-width: 768px) {
+  .new-post-form {
+    width: 500px;
+  }
+}

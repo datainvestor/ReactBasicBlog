@@ -1,0 +1,24 @@
+.inputControl {
+    margin: 10px 0;
+  }
+  
+  .inputControl label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .inputControl input,
+  .inputControl textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  
+  .inputControl input:focus,
+  .inputControl textarea:focus {
+    background-color: #eee;
+    outline: none;
+  }
