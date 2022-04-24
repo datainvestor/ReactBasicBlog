@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   font-family: 'Open Sans', sans-serif;
 }
@@ -146,4 +150,11 @@ body {
   .new-post-form {
     width: 500px;
   }
+}
+
+
+.logout-section {
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
 }
