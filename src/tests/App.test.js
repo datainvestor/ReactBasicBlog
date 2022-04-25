@@ -6,7 +6,6 @@ import {
   fireEvent,
 } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import { Router } from "react-router";
 import "@testing-library/jest-dom";
 import App from "../App";
 
