@@ -2,8 +2,8 @@ import AdminPostForm from "../../components/Admin/AdminPostForm";
 
 function NewPostPage() {
   return (
-    <div class='admin-new-post-page'>
-      <section class='new-post-form'>
+    <div className='admin-new-post-page'>
+      <section className='new-post-form'>
         <AdminPostForm />
       </section>
     </div>

@@ -11,7 +11,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, doc, deleteDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -78,14 +78,34 @@ const logout = () => {
 
 const addPost = async (inputValue) => {
     try {
-        await addDoc(collection(db, "posts"), {
-            inputValue
-        });
+        await addDoc(collection(db, "posts"), inputValue);
       } catch (err) {
         console.error(err);
         alert(err.message);
         throw(err)
       }
+}
+
+const editPost = async (id, updValue) => {
+  try {
+      const docRef = doc(db, "posts", id)
+      await setDoc(docRef, updValue);
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+      throw(err)
+    }
+}
+
+const deletePost = async (id) => {
+  try {
+    const docRef = doc(db, "posts", id)
+    await deleteDoc(docRef);
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+    throw(err)
+  }
 }
 
 
@@ -97,5 +117,7 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
-    addPost
+    addPost,
+    editPost,
+    deletePost
   };
