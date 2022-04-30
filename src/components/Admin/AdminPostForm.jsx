@@ -1,10 +1,12 @@
 import AppControlInput from "../shared/AppControlInput";
 import AppButton from "../shared/AppButton";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { db,addPost } from '../../firebase'
+import { addPost, deletePost, editPost } from "../../firebase";
+import BlogContext from "../../context/BlogContext";
 
-function AdminPostForm({ post }) {
+function AdminPostForm({ post, id, isEdit }) {
+  const { fetchPosts } = useContext(BlogContext);
   const [inputValue, setInputValue] = useState(
     post
       ? post
@@ -27,22 +29,33 @@ function AdminPostForm({ post }) {
       [name]: value,
     };
     setInputValue(updatedForm);
-    console.log(inputValue);
   };
 
-  // const submitForm = () => {
-  //   addPost()
-  //   navigate("/admin/")
-  // }
+  const submitNewPost = () => {
+    addPost(inputValue)
+      .then(() => {
+        fetchPosts().then(() =>  navigate("/admin/"))
+       
+      })
+      .catch(() => console.log("something failed"));
+  };
 
+  const editForm = () => {
+    editPost(id, inputValue)
+      .then(() => {
+        fetchPosts().then(() =>  navigate("/admin/"))
+      })
+      .catch(() => console.log("update failed"));
+  };
 
-//   const fetchBlogs= async ()=>{
-//     const response=db.collection('posts');
-//     const data=await response.get();
-//     data.docs.forEach(item=>{
-//      setBlogs([...blogs,item.data()])
-//     })
-// }
+  const deleteForm = () => {
+    deletePost(id)
+      .then(() => {
+        fetchPosts().then(() =>  navigate("/admin/"))
+      })
+      .catch(() => console.log("update failed"));
+  };
+
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -67,7 +80,9 @@ function AdminPostForm({ post }) {
       >
         Content
       </AppControlInput>
-      <AppButton type='submit'>Save</AppButton>
+      <AppButton type='submit' onClick={isEdit ? editForm : submitNewPost}>
+        Save
+      </AppButton>
       <AppButton
         type='button'
         style={{ marginLeft: "10px" }}
@@ -75,6 +90,14 @@ function AdminPostForm({ post }) {
         onClick={() => navigate("/admin/")}
       >
         Cancel
+      </AppButton>
+      <AppButton
+        type='button'
+        style={{ marginLeft: "10px" }}
+        btnStyle='cancel'
+        onClick={deleteForm}
+      >
+        Delete
       </AppButton>
     </form>
   );

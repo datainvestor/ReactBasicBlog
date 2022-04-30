@@ -1,18 +1,26 @@
 import AdminPostForm from "../../components/Admin/AdminPostForm";
+import { useContext, useEffect, useState } from "react";
+import BlogContext from "../../context/BlogContext";
+import { useParams } from "react-router-dom";
 
-const loadedPost = {
-  author: "Alexander",
-  title: "My awesome Post",
-  content: "Super amazing, thanks for that!",
-  thumbnailLink:
-    "https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg",
-};
 
 function EditPostPage() {
-  return (
+  const params = useParams();
+  const { loadPost } = useContext(BlogContext);
+  const [singlePost, setSinglePost] = useState();
+  const [isSingleLoading, setSingleLoading] = useState(true);
+
+  useEffect(() => {
+    loadPost(params.id).then((data) => {
+      setSinglePost(data);
+      setSingleLoading(false);
+    });
+  }, [loadPost, params]);
+
+  return isSingleLoading ? (<div>Loading...</div>): (
     <div>
       <section className='update-form'>
-        <AdminPostForm post={loadedPost} />
+        <AdminPostForm post={singlePost} id={params.id} isEdit={true} />
       </section>
     </div>
   );

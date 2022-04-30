@@ -10,10 +10,11 @@ import MainPage from "./pages/MainPage";
 import PostPage from "./pages/Post/PostPage";
 import PostsPage from "./pages/Post/PostsPage"
 import RequireAuth from "./pages/Auth/RequireAuth";
+import {BlogProvider} from "./context/BlogContext"
 
 function App() {
   return (
-    <div className='App'>
+    <BlogProvider>
       <Router>
         <Routes>
           <Route index element={<MainPage></MainPage>} />
@@ -32,7 +33,7 @@ function App() {
 
         </Routes>
       </Router>
-    </div>
+    </BlogProvider>
   );
 }
 
